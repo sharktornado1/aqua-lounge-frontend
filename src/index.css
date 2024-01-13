@@ -1,13 +1,751 @@
-body {
+
+body,
+html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-family: 'Helvetica', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Additional styles for specific elements if needed */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica', sans-serif;
+}
+
+p {
+  font-family: 'Helvetica', sans-serif;
+}
+
+/* Add more selectors and styles as needed for other elements */
+
+.grid-container {
+  background-color:rgb(170, 219, 248);
+  display: grid;
+  grid-template-areas: 
+  'header header'
+  'sidebar main-content';
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 100px 1fr;
+  height: 100vh;
+}
+.header {
+  grid-area: header;
+  border-radius: 10px;
+  margin: 10px;
+  margin-bottom: 0px;
+  background-color: rgb(110, 202, 255);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgb(233, 247, 255);
+}
+.sidebar-icon-container {
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 150px;
+  width: 90%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.sidebar-icon-container:hover {
+  background-color: rgb(204, 236, 255);
+}
+.sidebar-icon {
+  color: rgb(110, 202, 255);
+  font-size: 60px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.main-content {
+  grid-area: main-content;
+  border-radius: 20px;
+  margin: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.post-container {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: aliceblue;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  margin: 100px;
+  margin-top: 50px;
+  min-height: 400px;
+}
+.post-content-container {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+.post-date {
+  margin: 0;
+  color: rgb(73, 170, 255);
+}
+.post-body {
+  color:black;
+  width: 90%;
+  max-height: 80%;
+}
+.post-details-container {
+  width: 45%;
+  background-color: rgb(225, 241, 255);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.post-details-user-container {
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+}
+.post-profile-pic {
+  border: 2px solid;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  margin: 20px;
+  cursor: pointer;
+}
+.post-username {
+  font-size: 25px;
+  color: black;
+  cursor: pointer;
+}
+.post-delete-text {
+  color: rgb(184, 0, 0);
+  margin-left: auto;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.post-likes-container {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.likes-font {
+  font-size: 25px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.likes-font-clicked {
+  color: rgb(0, 132, 255);
+  font-size: 25px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.dislikes-font-clicked {
+  color: red;
+  font-size: 25px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.post-image {
+  width: 700px;
+  max-width: 95%;
+  height: 400px; 
+  object-fit: contain;
+  position: relative;
+}
+.post-comments-container {
+  margin: 10px;
+  border-radius: 5px;
+  height: 100%;
+  min-height: 250px;
+  background-color: rgb(205, 230, 252);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.comment-container {
+  margin-top: 2px;
+  border-top: 1px solid rgb(180, 220, 255);
+  display: flex;
+  align-items: center;
+}
+.comment-username {
+  color:rgb(0, 93, 175);
+  margin-left: 10px;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+}
+.add-comment-container {
+  display: flex;
+  justify-content: center;
+}
+.comment-text {
+  margin-left: 10px;
+  color: rgb(0, 99, 185);
+}
+.comment-box {
+  position: relative;
+  width: 85%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  resize: none;
+  height: 30px;
+  font-size: large;
+}
+.add-comment-button {
+  background-color: rgb(110, 202, 255);
+  border: 0;
+  border-radius: 5px;
+  height: 40px;
+  width: 12%;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  cursor:pointer;
+}
+.add-comment-button:hover {
+  background-color: rgb(168, 223, 255);
+}
+.paper-plane {
+  font-size: large;
+  color: white;
+}
+.add-post-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-post-button {
+  color:white;
+  font-size: larger;
+  height: 60px;
+  width: 300px;
+  cursor: pointer;
+  background-color: rgb(110, 202, 255);
+  border: 0;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: 0.3s ease;
+}
+.add-post-button:hover {
+  background-color: rgb(168, 223, 255);
+}
+.add-post-container {
+  background-color: rgba(0, 0, 0, 0.70);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-post-form-container{
+  border-radius: 10px;
+  width: 50%;
+  height: 80%;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+
+}
+.add-post-title-input {
+  height: 40px;
+  font-size: larger;
+  margin-left: 50px;
+  width: 50%;
+  margin-top: 60px;
+  border-radius: 10px;
+}
+.add-post-body-input {
+  font-size: large;
+  resize: none;
+  margin-left: 50px;
+  margin-top: 30px;
+  width: 80%;
+  height: 35%;
+  border-radius: 10px;
+}
+.add-post-close-icon {
+  margin: 10px;
+  align-self: flex-end;
+  font-size: 30px;
+  cursor: pointer;
+}
+.add-post-submit-button {
+  margin-top: 50px;
+  width: 20%;
+  height: 50px;
+  align-self: center;
+  background-color: rgb(110, 202, 255);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: larger;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.add-post-submit-button:hover {
+  background-color: rgb(168, 223, 255);
+}
+
+.friends-main-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.friends-list-container {
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: aliceblue;
+  width: 25%;
+  height: 95%;
+  margin-top: 20px;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.friends-list-inner-container {
+  background-color: rgb(225, 241, 255);
+  width: 90%;
+  height: 85%;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.friend-box {
+  width: 95%;
+  min-height: 90px;
+  max-height: 90px;
+  background-color: rgb(191, 225, 255);
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.friend-box-avatar {
+  border: 2px solid;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+  cursor: pointer;
+}
+.friend-box-content {
+  display: flex;
+  flex-direction: column;
+}
+.friend-box-username {
+  font-size:25px;
+  margin: 0px;
+  margin-top: 10px;
+  color: rgb(0, 72, 131);
+}
+.friend-box-remove-text {
+  color: rgb(163, 0, 0);
+  font-size: 14px;
+  cursor: pointer;
+}
+.friend-box-confirm-cancel {
+  display: flex;
+  flex-direction: row;
+}
+.friend-box-cancel-text {
+  color: rgb(0, 102, 255);
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.friends-list-search-box {
+  margin-top: auto;
+  width: 80%;
+  height: 30px;
+}
+.friends-list-title {
+  font-size:25px;
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(0, 72, 131);
+}
+.user-box-sent-text {
+  color: rgb(0, 102, 255);
+  font-size: 14px;
+}
+.user-box-send-text {
+  color: rgb(0, 77, 192);
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.user-box-search-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.user-box-search-button {
+  background-color: rgb(110, 202, 255);
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+  height: 35px;
+  width: 45px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.user-box-search-button:hover {
+  background-color: rgb(168, 223, 255);
+}
+.incoming-friend-accept-text {
+  color: rgb(0, 102, 255);
+  font-size: 14px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.incoming-friend-deny-text {
+  color: rgb(163, 0, 0);
+  font-size: 14px;
+  cursor: pointer;
+}
+.header-profile-pic {
+  border: 2px solid;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.profile-header {
+  align-self: center;
+  min-height: 300px;
+  border-radius: 10px;
+  width: 100%;
+  background-color: rgb(227, 242, 255);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+}
+.profile-post-page-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.profile-pic-container {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 20px;
+  border: solid rgb(60, 164, 255);
+}
+.profile-title {
+  font-size: 40px;
+  color: rgb(0, 94, 134);
+  font-weight: bold;
+}
+.profile-edit-pic-form {
+  background-color: rgb(211, 235, 255);
+  height: 40px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.profile-pic-input {
+  width: 200px;
+}
+.profile-edit-pic-text {
+  color:rgb(0, 81, 255);
+  cursor: pointer;
+}
+.profile-edit-pic-button {
+  background-color: rgb(102, 183, 255);
+  margin-right: 10px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.profile-edit-pic-button:hover {
+  background-color: rgb(130, 196, 255);
+}
+.profile-friends-button-remove {
+  background-color: rgb(255, 102, 102);
+  width: 150px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 2s ease;
+}
+.profile-friends-button-remove:hover {
+  background-color: rgb(171, 0, 0)
+}
+.profile-friends-button-add {
+  background-color: rgb(102, 214, 255);
+  width: 150px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 2s ease;
+}
+.profile-friends-button-add:hover {
+  background-color: rgb(0, 114, 171)
+}
+.chat-page-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.chat-container {
+  width: 75%;
+  height: 95%;
+  background-color: rgb(225, 241, 255);
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.chat-sidebar{
+  width: 25%;
+  height: 95%;
+  background-color: rgb(225, 241, 255);
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+.chat-area-container {
+  height: 80%;
+  max-height: 90%;
+  overflow: auto;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+
+}
+.chat-input-container {
+  height: 7%;
+  display: flex;
+  align-items: center;
+}
+.chat-input {
+  width: 85%;
+  height: 100%;
+  padding-left: 10px;
+  margin-left: 10px;
+  background-color: white;
+  border: solid 1px rgb(0, 0, 0, 0.5);
+}
+.chat-send-button {
+  width: 12%;
+  height: 110%;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgb(110, 202, 255);
+  border: 0;
+  border-radius: 5px;
+  cursor:pointer;
+  transition: 0.3s ease;
+}
+.chat-send-button:hover {
+  background-color: rgb(168, 223, 255);
+}
+.user-message-container {
+  width: fit-content;
+  display: flex;
+  margin-left: auto;
+  margin-right: 10px;
+  align-items: center;
+}
+.user-message-text {
+  background-color: rgb(74, 189, 255);
+  color: white;
+  font-size: larger;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  word-wrap: break-word;
+  margin-left: auto;
+}
+.chat-pfp {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: solid;
+}
+.friend-message-container {
+  width: fit-content;
+  display: flex;
+  margin-left: 10px;
+  margin-right: auto;
+  align-items: center;
+}
+.friend-message-text {
+  background-color: rgb(0, 84, 133);
+  color: white;
+  font-size: larger;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+.chat-search-form {
+  margin-top: 10px;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+}
+.chat-search-input {
+  width: 85%;
+  height: 100%;
+}
+.chat-friends-list-container {
+  margin-top: 10px;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
+.chat-friend-box {
+  margin-top: 10px;
+  width: 95%;
+  height: 15%;
+  background-color: rgb(191, 225, 255);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chat-friend-pfp {
+  height: 80%;
+  width: 20%;
+  border-radius: 50%;
+  margin-left: 10px;
+  border: solid;
+}
+.chat-friend-username {
+  font-size: 25px;
+  color: darkblue;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: 50%;
+  overflow: hidden;
+}
+.chat-friend-online-status {
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: 15px;
+  color: green;
+}
+.chat-friend-offline-status {
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: 15px;
+  color: red;
+}
+.chat-header {
+  height: 10%;
+  background-color: rgb(191, 225, 255);
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  box-shadow: 0px 4px 6px -3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+.chat-header-text {
+  font-size: larger;
+  color: darkblue;
+}
+.sidebar-chat-notification {
+  position: absolute;
+  background-color: rgb(0, 136, 255);
+  font-size: 20px;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  top: 15%;
+  right: 15%;
+}
+.friend-chat-notification{
+  color: white;
+  font-weight: bold;
+  padding: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 50% 50% 50% 0;
+  margin-left: 10px;
+  background-color: rgb(0, 136, 255);
+}
+.logout-text {
+  cursor: pointer;
+  color: blue;
+}
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-page-title {
+  font-weight: bolder;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 60px;
+  margin-bottom: 0;
+}
+.login-page-logo {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 0px;
+}
+.header-credit-text {
+  color: rgb(0, 83, 156);
+  margin-right: auto;
+  margin-left: 20px;
 }
