@@ -34,7 +34,7 @@ function ChatFriend({user,setSelectedFriend,unreads,getUnreads,friends}) {
   },[friends])
 
   useEffect(()=>{
-    const newsocket = io('http://localhost:5001')
+    const newsocket = io('/')
 
     newsocket.emit('isOnline',user._id,(isOnline)=>{
       setOnlineStatus(isOnline)

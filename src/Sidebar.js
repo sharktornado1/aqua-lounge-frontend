@@ -37,7 +37,7 @@ function Sidebar({userDetails}) {
       }
       else
       {
-        const newSocket = io('http://localhost:5001');
+        const newSocket = io('/');
 
         newSocket.on('connect', () => {
         console.log('Successfully connected to Socket IO server from sidebar');

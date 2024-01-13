@@ -102,7 +102,7 @@ function ChatMain({userDetails}) {
     }
 
     useEffect(()=>{
-        const newSocket = io('http://localhost:5001');
+        const newSocket = io('/');
     
         newSocket.on('connect', () => {
         console.log('Successfully connected to Socket IO server');
